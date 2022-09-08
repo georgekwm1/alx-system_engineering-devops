@@ -1,0 +1,2 @@
+#!/bin/bash
+BREATH='5' | LOVE='2' | echo (($BREATH**$LOVE))

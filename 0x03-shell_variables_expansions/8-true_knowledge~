@@ -1,0 +1,2 @@
+#!/bin/bash
+export TRUEKNOWLEDGE='2' | print $TRUEKNOWLEGE((+$((128))\n))
