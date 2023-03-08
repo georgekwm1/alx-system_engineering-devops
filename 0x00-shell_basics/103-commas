@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -am | ls -d . .. */  | sort -f | grep "^\."
+ls -am | find . -type d -name '*/' | ls -d . .. */  | sort -f | grep "^\."
