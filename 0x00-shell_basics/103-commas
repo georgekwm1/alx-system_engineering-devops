@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -amp | grep '^[0-9]' | grep -E '^\.{1,2}$' | grep -vE '^\.{1,2}$' | sort
+ls -amp | ls -1v
