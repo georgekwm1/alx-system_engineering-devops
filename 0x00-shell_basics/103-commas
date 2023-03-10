@@ -1,2 +1,3 @@
 #!/bin/bash
-ls --group-directories-first | ls -am | find . -type d -name '*/' | ls -d . .. */  | sort -f | grep "^\."
+ls -amp
+
