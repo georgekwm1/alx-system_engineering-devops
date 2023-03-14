@@ -1,2 +1,2 @@
 #!/bin/bash
-export TRUEKNOWLEDGE=1209 | printf $(($(($TRUEKNOWLEGE+128))\n))
+export TRUEKNOWLEDGE=1209 | source ~/.bashrc | printf $(($(($TRUEKNOWLEGE+128))\n))
