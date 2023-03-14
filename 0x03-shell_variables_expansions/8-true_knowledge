@@ -1,2 +1,2 @@
 #!/bin/bash
-export TRUEKNOWLEDGE=2 | print $(($(($TRUEKNOWLEGE+128))\n))
+export TRUEKNOWLEDGE=1209 | print $(($(($TRUEKNOWLEGE+128))\n))
