@@ -1,2 +1,3 @@
 #!/bin/bash
-export BEST= "School" | source ~/.bashrc | echo $BEST
+export BEST= "School"
+echo $BEST
