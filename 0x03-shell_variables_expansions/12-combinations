@@ -1,2 +1,2 @@
 #!/bin/bash
-echo {a{a..z}..z{a..z}}
+i={a..z} | j={a..z} | echo $i$j\n | grep -v '^oo' | sort
