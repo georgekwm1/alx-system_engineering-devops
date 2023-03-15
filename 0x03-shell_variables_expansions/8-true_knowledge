@@ -1,2 +1,2 @@
 #!/bin/bash
-export TRUEKNOWLEDGE=1209 | source ~/.bashrc | echo $(($TRUEKNOWLEGE+128))
+export TRUEKNOWLEDGE=1209 | source ~/.bashrc | fmt |echo $(($TRUEKNOWLEGE+128))
