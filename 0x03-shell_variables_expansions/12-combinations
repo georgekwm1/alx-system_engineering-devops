@@ -1,2 +1,2 @@
 #!/bin/bash
-i={a..z} | j={a..z} | echo $i$j\n | grep -v '^oo' | sort
+echo {a..z}{a..z} |tr ' ' '\n' | grep -v '^oo$'
