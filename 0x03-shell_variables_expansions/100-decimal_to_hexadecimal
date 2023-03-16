@@ -1,2 +1,2 @@
 #!/bin/bash
-export DECIMAL=50 | fmt |echo $(([##16]DECIMAL))
+export DECIMAL=50 | printf "%x\n" "$DECIMAL"
