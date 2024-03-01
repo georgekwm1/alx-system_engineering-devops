@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+#installs and configures nginx
+
+#installing nginx
+echo "Installing Nginx\n"
+
+sudo apt update
+sudo apt-get -y install nginx
+
+#configure nginx to listen to port 80
+echo "Configuring Nginx port ot 80\n"
+
+sed -i 's/80/8080/g' /etc/nginx/sites-enabled/default
+
+#starts the nginx server
+echo "Starting Nginx server\n"
+
+sudo service nginx start
+
+
