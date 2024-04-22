@@ -1,3 +1,4 @@
+# creates a file /tmp/school
 file  { 'school':
   ensure  => present,
   path    => '/tmp/school',
