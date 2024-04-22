@@ -4,3 +4,9 @@ exec { 'install_flask':
   path    => ['/usr/bin'],
   unless  => 'pip3 show Flask',
 }
+
+# Install required dependencies
+package { 'werkzeug':
+  ensure   => '2.1.1',
+  provider => 'pip3',
+}
