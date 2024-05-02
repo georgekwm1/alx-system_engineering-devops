@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Find and replace the line to bind port 80 to all IPv4 addresses in the default site configuration file
+    echo "Updating the configuration to bind port 80 to all IPv4 addresses..."
+    awk '/^server {/,/^listen \[::\]:80 default_server;/ { if ($0 ~ /^ *listen [[:digit:]]+ default_server;/) print "        listen 80 default_server;"; else print; next } 1' /etc/nginx/sites-enabled/default > /tmp/default.tmp && sudo mv /tmp/default.tmp /etc/nginx/sites-enabled/default
+
+# Stop the Apache service
+sudo systemctl stop apache2
+    # Restart Nginx with sudo
+    sudo systemctl restart nginx
+
+# Check if UFW firewall configuration is restricting Nginx from binding to port 80
+if sudo ufw status | grep -q "80/tcp"; then
+    echo "Error: UFW firewall configuration is restricting Nginx from binding to port 80"
+    # Allow incoming traffic on port 80
+    echo "Allowing incoming traffic on port 80..."
+    sudo ufw allow 80/tcp
+fi
+
