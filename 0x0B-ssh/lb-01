@@ -1,0 +1,6 @@
+Host 141705-lb-01
+	Hostname 100.25.36.230
+	User ubuntu
+	PasswordAuthentication no
+	IdentityFile ~/.ssh/school
+

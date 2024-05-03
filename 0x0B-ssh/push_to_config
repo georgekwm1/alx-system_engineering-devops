@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#push web-02 and lb-01 congiguration to ~/.ssh/config
+cat web-02 >> ~/.ssh/config
+cat lb-01 >> ~/.ssh/config
+
