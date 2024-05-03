@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # Get the hostname of the server
 HOSTNAME=$(hostname)
 
