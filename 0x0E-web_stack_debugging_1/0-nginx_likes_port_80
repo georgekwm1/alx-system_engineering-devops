@@ -31,9 +31,6 @@ if sudo ufw status | grep -q "80/tcp"; then
     sudo ufw allow 80/tcp
 fi
 
-# Create a simple HTML file
-echo "<!DOCTYPE html><html><head><title>Test Page</title></head><body><h1>This is a test page served by Nginx</h1></body></html>" | sudo tee /var/www/html/index.html > /dev/null
-
 # Restart Nginx to apply changes
 sudo systemctl restart nginx
 sudo service nginx restart
