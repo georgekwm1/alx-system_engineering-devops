@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#Check if the "listen 80 default_server;" line is present and correctly configured in the default site configuration file
+# Check if the "listen 80 default_server;" line is present and correctly configured in the default site configuration file
 if ! grep -q "listen 80 default_server;" /etc/nginx/sites-enabled/default; then
     echo "Error: 'listen 80 default_server;' is missing or misconfigured in /etc/nginx/sites-enabled/default"
     # Find and replace the line to bind port 80 to all IPv4 addresses in the default site configuration file
@@ -31,6 +31,40 @@ if sudo ufw status | grep -q "80/tcp"; then
     sudo ufw allow 80/tcp
 fi
 
+
+# Define the HTML content
+html_content='<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>'
+
+# Write the HTML content to index.html
+echo "$html_content" | sudo tee /var/www/html/index.html > /dev/null
+
 # Restart Nginx to apply changes
 sudo systemctl restart nginx
 sudo service nginx restart
+
+echo "Nginx is now configured to listen on port 80 and serve the default page."
+
