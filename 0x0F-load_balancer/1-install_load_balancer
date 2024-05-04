@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+#Installs and configure HAproxy on your lb-01 server.
+
+#Updates packages and installs HAProxy
+sudo apt-get update
+sudo apt-get install -y haproxy
+
+#Updates the configuration file for HAProxy
+config_update =\
+"
+frontend http_front
+    bind *:80
+    default_backend http_back
+
+backend http_back
+    balance roundrobin
+    server 141705-web-01 34.201.161.6 check
+    server 141705-web-02 100.25.12.248 check
+"
+echo "${config_update}i" >> /etc/haproxy/haproxy.cfg
+
+#Set File permision
+sudo chmod u+x /etc/init.d/haproxy
+
+#enable haproxy to be started by init script
+sudo systemctl enable haproxy
+sudo /etc/init.d/haproxy restart
+sudo systemctl start haproxy
+
+#Restarts HAProxy to apply changes
+sudo service haproxy restart
