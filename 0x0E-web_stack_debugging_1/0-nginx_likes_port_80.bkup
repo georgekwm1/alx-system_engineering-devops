@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-#Check if the "listen 80 default_server;" line is present and correctly configured in the default site configuration file
+# Check if the "listen 80 default_server;" line is present and correctly configured in the default site configuration file
 if ! grep -q "listen 80 default_server;" /etc/nginx/sites-enabled/default; then
     echo "Error: 'listen 80 default_server;' is missing or misconfigured in /etc/nginx/sites-enabled/default"
-    # Find and replace the line to bind port 80 to all IPv4 addresses in the default site configuration file
+# Find and replace the line to bind port 80 to all IPv4 addresses in the default site configuration file
     echo "Updating the configuration to bind port 80 to all IPv4 addresses..."
     awk '/^server {/,/^listen \[::\]:80 default_server;/ { if ($0 ~ /^ *listen [[:digit:]]+ default_server;/) print "        listen 80 default_server;"; else print; next } 1' /etc/nginx/sites-enabled/default > /tmp/default.tmp && sudo mv /tmp/default.tmp /etc/nginx/sites-enabled/default
 fi
@@ -31,9 +31,3 @@ if sudo ufw status | grep -q "80/tcp"; then
     sudo ufw allow 80/tcp
 fi
 
-# Create a simple HTML file
-echo "<!DOCTYPE html><html><head><title>Test Page</title></head><body><h1>This is a test page served by Nginx</h1></body></html>" | sudo tee /var/www/html/index.html > /dev/null
-
-# Restart Nginx to apply changes
-sudo systemctl restart nginx
-sudo service nginx restart
