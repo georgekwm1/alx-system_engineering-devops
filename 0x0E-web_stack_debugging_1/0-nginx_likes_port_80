@@ -62,6 +62,9 @@ Commercial support is available at
 # Write the HTML content to index.html
 echo "$html_content" | sudo tee /var/www/html/index.html > /dev/null
 
+#Creating a symbolic link
+ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+
 # Restart Nginx to apply changes
 sudo systemctl restart nginx
 sudo service nginx restart
