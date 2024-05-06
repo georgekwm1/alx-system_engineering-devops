@@ -15,7 +15,7 @@ elif [ $# -lt 2 ]; then
     for item in "${my_subdomains[@]}"; do
         echo "The subdomain $item is a $(dig "$item.$1" \
         | grep "ANSWER SECTION" -A 1\
-        | awk '/^'"$item.$1"'/{getline; print $(NF-1)}') record of $(dig "$item.$1" \
+        | awk '/^'"$item.$1"'/{getline; print $(NF-1)}') record and points to $(dig "$item.$1" \
         | grep "ANSWER SECTION" -A 1\
         | awk '/^'"$item.$1"'/{getline; print $NF}')"
     done
