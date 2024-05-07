@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # a Bash script that configures a server
-awk '/^server {/,/^listen \[::\]:80 default_server;/ { if ($0 ~ /^ *listen [[:digit:]]+ default_server;/) print "        listen 80 default_server;"; else print; next } 1' /etc/nginx/sites-enabled/default > /tmp/default.tmp && sudo mv /tmp/default.tmp /etc/nginx/sites-enabled/default
-sudo systemctl stop apache2
-sudo systemctl restart nginx
+cp -r /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+service nginx restart 
+pkill -o nginx
