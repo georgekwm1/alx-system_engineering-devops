@@ -1,0 +1,6 @@
+sudo: netstat: command not found
+sudo: ufw: command not found
+Failed to connect to bus: No such file or directory
+ * Restarting nginx nginx
+   ...done.
+Nginx is now configured to listen on port 80 and serve the default page.

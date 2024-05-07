@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Get the hostname of the server
+HOSTNAME=$(hostname)
+
+# Configure Nginx to listen on port 80
+echo "server {
+    listen 80;
+    server_name localhost;
+
+    location / {
+        add_header X-Served-By $HOSTNAME;
+        return 200 'Hello World!';
+    }
+}" >> /etc/nginx/sites-available/default
+
+# Restart Nginx to apply changes
+sudo service nginx restart
+
