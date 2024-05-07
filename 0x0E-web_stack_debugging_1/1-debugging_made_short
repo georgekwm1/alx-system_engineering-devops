@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # a Bash script that configures a server
 cp -r /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
-sudo systemctl restart nginx
+sudo service nginx restart 
 pkill -o nginx
