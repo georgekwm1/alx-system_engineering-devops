@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+# install the ufw firewall and setup a few rules on remote server
+# Update package list and install ufw
+echo "Updating package list..."
+sudo apt-get update -y
+
+echo "Installing UFW..."
+sudo apt-get install ufw -y
+
+# Allow incoming traffic on ports 22, 80, and 443
+echo "Configuring UFW rules..."
+sudo ufw allow 22/tcp
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+
+# Deny all other incoming traffic by default
+echo "Setting default UFW policies..."
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+
+# Enable the firewall
+echo "Enabling UFW..."
+sudo ufw enable
+
+# Display the current status and rules
+echo "UFW status and rules:"
+sudo ufw status verbose
+
+echo "Firewall configuration completed."
+
