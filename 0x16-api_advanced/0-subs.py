@@ -11,11 +11,13 @@ def number_of_subscribers(subreddit):
     """ Returns the total number of subscribers """
 
     url = f'https://www.reddit.com/r/{subreddit}/about.json'
-    user_agent = {"User-Agent": 'Python:script:subscribers:v1.0 (by georgekwm1)'}
-    response = requests.get(url, headers=user_agent, allow_redirects=False, timeout=60)
+    user_agent = {"User-Agent": 'Python:script:subscribers:v1.0\
+                    (by georgekwm1)'}
+    response = requests.get(url, headers=user_agent,
+                            allow_redirects=False, timeout=60)
     try:
         data = response.json()['data']['subscribers']
         return (data)
-   
-    except Exceptioin:
-         return (0)
+
+    except Exception:
+        return (0)
