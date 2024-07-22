@@ -2,17 +2,15 @@
 server {
     	listen 80; #Listens on port 80 for incomming requests
 	listen [::]:80;
-    	server_name 35.175.134.64; #Server name
+    	server_name 127.0.0.1 54.157.157.37; #Server name
 	add_header X-Served-By $hostname;
 	
 	location /airbnb-onepage {
         proxy_pass http://127.0.0.1:5000/airbnb-onepage;
 	
-        }
-	
 	 }
-         location ~ ^/airbnb-dynamic/number_odd_or_even/([0-9]+)$ {
-                        proxy_pass http://0.0.0.0:5001/number_odd_or_even/$1;
+        location ~ ^/airbnb-dynamic/number_odd_or_even/([0-9]+)$ {
+         proxy_pass http://0.0.0.0:5001/number_odd_or_even/$1;
                 }
 }
 
